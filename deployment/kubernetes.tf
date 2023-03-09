@@ -44,18 +44,18 @@ provider "kubernetes" {
   }
 }
 
-resource "kubernetes_manifest" "app" {  
-manifest = yamldecode(file(app.yml))
+resource "kubernetes_manifest" "app" {
+  manifest = yamldecode(file("${path.module}/app.yml"))
 }
 
 resource "kubernetes_manifest" "db" {
-manifest = yamldecode(file(mongo.yml))
+  manifest = yamldecode(file("${path.module}/mongo.yml"))
 }
 
 resource "kubernetes_manifest" "db-config-map" {
-manifest = yamldecode(file(mongo-config.yml))
+  manifest = yamldecode(file("${path.module}/mongo-config.yml"))
 }
 
 resource "kubernetes_manifest" "secrets" {
-manifest = yamldecode(file(mongo-secret.yml))
+  manifest = yamldecode(file("${path.module}/mongo-secret.yml"))
 }

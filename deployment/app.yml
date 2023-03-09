@@ -35,7 +35,7 @@ spec:
             configMapKeyRef:
               name: db-config
               key: db-url
----
+
 apiVersion: v1
 kind: Service
 metadata:
