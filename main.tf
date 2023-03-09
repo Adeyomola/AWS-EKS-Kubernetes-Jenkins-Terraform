@@ -81,3 +81,8 @@ module "eks" {
     }
   }
 }
+
+module "deployment" {
+  source = "./deployment"
+
+}
