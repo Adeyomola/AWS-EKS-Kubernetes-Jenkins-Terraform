@@ -8,7 +8,7 @@ provider "aws" {
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "sock shop"
+  cluster_name = "sock_shop"
 }
 
 #resource "random_string" "suffix" {
