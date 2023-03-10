@@ -30,7 +30,7 @@ spec:
             secretKeyRef:
               name: db-secret
               key: db-password
-
+---
 apiVersion: v1
 kind: Service
 metadata:
