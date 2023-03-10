@@ -1,14 +1,4 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 terraform {
-
-  #  cloud {
-  #    workspaces {
-  #      name = "learn-terraform-eks"
-  #    }
-  #  }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -24,13 +14,11 @@ terraform {
       source  = "hashicorp/tls"
       version = "~> 4.0.4"
     }
-
-    #   cloudinit = {
-    #     source  = "hashicorp/cloudinit"
-    #     version = "~> 2.2.0"
-    #   }
   }
 
   required_version = "~> 1.3"
 }
 
+provider "aws" {
+  region = var.region
+}
