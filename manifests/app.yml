@@ -18,7 +18,7 @@ spec:
       - name: app
         image: nanajanashia/k8s-demo-app:v1.0
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         env:
         - name: USER_NAME
           valueFrom:
@@ -48,5 +48,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000
+#      targetPort: 
 #      nodePort: 30100
