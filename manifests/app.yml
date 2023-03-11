@@ -42,7 +42,7 @@ metadata:
   name: app-service
   namespace: default
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: app
   ports:

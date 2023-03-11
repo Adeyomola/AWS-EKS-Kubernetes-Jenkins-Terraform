@@ -4,8 +4,9 @@ resource "helm_release" "aws_load_balancer_controller" {
 
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
-  version    = "1.4.4"
+#  version    = "1.4.4"
   namespace  = "kube-system"
+
   set {
     name  = "replicaCount"
     value = 1
@@ -16,10 +17,10 @@ resource "helm_release" "aws_load_balancer_controller" {
     value = module.eks.cluster_name
   }
 
-  set {
-    name  = "serviceAccount.create"
-    value = "false"
-  }
+#  set {
+#    name  = "serviceAccount.create"
+#    value = "false"
+#  }
 
   set {
     name  = "serviceAccount.name"
