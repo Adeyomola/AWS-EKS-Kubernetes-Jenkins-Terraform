@@ -1,11 +1,11 @@
-resource "helm_release" "lb_controller" {
-  name = "lb_controller"
+resource "helm_release" "aws_load_balancer_controller" {
+  depends_on = [module.aws_load_balancer_controller_irsa_role]
+  name       = "aws-load-balancer-controller"
 
   repository = "https://aws.github.io/eks-charts"
-  chart      = "lb_controller"
-  namespace  = "default"
+  chart      = "aws-load-balancer-controller"
   version    = "1.4.4"
-
+  namespace  = "kube-system"
   set {
     name  = "replicaCount"
     value = 1
@@ -13,16 +13,21 @@ resource "helm_release" "lb_controller" {
 
   set {
     name  = "clusterName"
-    value = module.eks.cluster_id
+    value = module.eks.cluster_name
+  }
+
+  set {
+    name  = "serviceAccount.create"
+    value = "false"
   }
 
   set {
     name  = "serviceAccount.name"
-    value = "lb_controller"
+    value = "aws-load-balancer-controller"
   }
 
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-    value = module.lb_controller.iam_role_arn
+    value = module.aws_load_balancer_controller_irsa_role.iam_role_arn
   }
 }

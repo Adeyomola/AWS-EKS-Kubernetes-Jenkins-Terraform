@@ -65,14 +65,14 @@ module "eks" {
   }
 }
 
-module "lb_controller" {
+module "aws_load_balancer_controller_irsa_role" {
   source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  role_name                              = "lb_controller_role"
+  role_name                              = "aws-load-balancer-controller"
   attach_load_balancer_controller_policy = true
   oidc_providers = {
     ex = {
       provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["default:lb_controller"]
+      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
     }
   }
 }
