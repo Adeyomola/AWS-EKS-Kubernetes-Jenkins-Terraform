@@ -17,3 +17,8 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = module.eks.cluster_name
 }
+
+output "dns_name" {
+  description = "The DNS name of the load balancer."
+  value       = data.aws_lb.available.dns_name
+}
