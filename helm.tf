@@ -1,5 +1,5 @@
 resource "helm_release" "aws_load_balancer_controller" {
-  depends_on = [module.aws_load_balancer_controller_irsa_role]
+  depends_on = [module.aws_load_balancer_controller_iam_role]
   name       = "aws-load-balancer-controller"
 
   repository = "https://aws.github.io/eks-charts"
@@ -23,6 +23,14 @@ resource "helm_release" "aws_load_balancer_controller" {
 
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-    value = module.aws_load_balancer_controller_irsa_role.iam_role_arn
+    value = module.aws_load_balancer_controller_iam_role.iam_role_arn
   }
+}
+
+resource "helm_release" "prometheus" {
+  name       = "prometheus"
+  namespace  = "monitoring"
+  version    = "36.2.0"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "kube-prometheus-stack"
 }

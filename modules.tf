@@ -1,5 +1,4 @@
 data "aws_availability_zones" "available" {}
-data "aws_lb" "available" {}
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -62,7 +61,7 @@ module "eks" {
   }
 }
 
-module "aws_load_balancer_controller_irsa_role" {
+module "aws_load_balancer_controller_iam_role" {
   source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
   role_name                              = "aws-load-balancer-controller"
   attach_load_balancer_controller_policy = true
