@@ -26,5 +26,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-mongo-secret.yml
+# Ignore lock file
 *.lock.hcl

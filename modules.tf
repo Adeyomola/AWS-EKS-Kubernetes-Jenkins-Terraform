@@ -38,6 +38,8 @@ module "eks" {
   subnet_ids                     = module.vpc.private_subnets
   cluster_endpoint_public_access = true
 
+  create_cloudwatch_log_group = false
+
   eks_managed_node_group_defaults = {
     ami_type = "AL2_x86_64"
   }
@@ -61,14 +63,14 @@ module "eks" {
   }
 }
 
-module "aws_load_balancer_controller_iam_role" {
-  source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  role_name                              = "aws-load-balancer-controller"
-  attach_load_balancer_controller_policy = true
-  oidc_providers = {
-    ex = {
-      provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
-    }
-  }
-}
+#module "aws_load_balancer_controller_iam_role" {
+#  source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+#  role_name                              = "aws-load-balancer-controller"
+#  attach_load_balancer_controller_policy = true
+#  oidc_providers = {
+#    ex = {
+#      provider_arn               = module.eks.oidc_provider_arn
+#      namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
+#    }
+#  }
+#}

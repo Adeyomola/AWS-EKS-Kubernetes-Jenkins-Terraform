@@ -17,9 +17,16 @@ resource "kubernetes_namespace" "monitoring" {
   }
 }
 
-data "kubernetes_ingress_v1" "ingress" {
-depends_on = [resource.kubectl_manifest.deploy]
+data "kubernetes_service" "lb" {
+  depends_on = [kubectl_manifest.deploy]
   metadata {
-    name = "app-ingress"
+    name = "app-service"
+  }
+}
+
+resource "null_resource" "kube_config" {
+  depends_on = [module.eks.cluster_name, var.region]
+  provisioner "local-exec" {
+    command = "aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)"
   }
 }
