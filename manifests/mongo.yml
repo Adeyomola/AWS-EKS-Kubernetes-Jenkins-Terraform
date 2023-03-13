@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: profilr
   name: db-deployment
   labels:
     app: db
@@ -35,7 +36,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: db-service
-  namespace: default
+  namespace: profilr
 spec:
   selector:
     app: db

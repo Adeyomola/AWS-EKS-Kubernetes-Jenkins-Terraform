@@ -15,3 +15,8 @@ variable "domain_name" {
   type    = string
   default = "adeyomola.me"
 }
+
+variable "namespaces" {
+  type    = set(any)
+  default = ["monitoring", "profilr", "sockapp"]
+}

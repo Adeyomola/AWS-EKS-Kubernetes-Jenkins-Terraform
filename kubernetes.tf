@@ -11,9 +11,10 @@ resource "kubectl_manifest" "deploy" {
   yaml_body = each.value
 }
 
-resource "kubernetes_namespace" "monitoring" {
+resource "kubernetes_namespace" "namespaces" {
+  for_each = var.namespaces
   metadata {
-    name = "monitoring"
+    name = each.value
   }
 }
 
