@@ -25,3 +25,11 @@ data "kubernetes_service_v1" "lb" {
     namespace = "profilr"
   }
 }
+
+data "kubernetes_service_v1" "lb-sock-shop" {
+  depends_on = [kubectl_manifest.deploy]
+  metadata {
+    name      = "front-end"
+    namespace = "sock-shop"
+  }
+}

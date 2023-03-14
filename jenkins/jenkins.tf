@@ -5,7 +5,9 @@ resource "aws_instance" "jenkins" {
   user_data                   = file("user_data.sh")
   associate_public_ip_address = true
   key_name                    = "windows11"
-
+  tags = {
+    Name = "jenkins-server"
+  }
 }
 
 data "aws_vpc" "default" {
@@ -27,6 +29,27 @@ resource "aws_security_group" "jenkins_sg" {
   ingress {
     from_port   = 8080
     to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 9090
+    to_port     = 9090
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 9093
+    to_port     = 9093
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
