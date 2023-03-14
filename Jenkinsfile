@@ -7,16 +7,6 @@ pipeline {
 	AWS_DEFAULT_REGION = "us-east-1"
     }
     stages {
-        stage("Create Backends") {
-            steps {
-                script {
-                    dir("backend") {
-                        sh "terraform init"
-                        sh "terraform apply -auto-approve"
-                    }
-                }
-            }
-        }
 	stage("Create Cluster With Prometheus and Grafana") {
 	    steps {
 		script {

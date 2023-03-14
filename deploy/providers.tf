@@ -1,12 +1,21 @@
 data "terraform_remote_state" "eks" {
-  backend = "local"
+  backend = "s3"
 
   config = {
-    path = "../provision/terraform.tfstate"
+    key    = "provision/terraform.tfstate"
+    bucket = "adeyomola-tfstate-bucket"
+    region = "us-east-1"
   }
 }
 
 terraform {
+  backend "s3" {
+    bucket         = "adeyomola-tfstate-bucket"
+    key            = "deploy/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "adeyomola_dynamodb"
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
