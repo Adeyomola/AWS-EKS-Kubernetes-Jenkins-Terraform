@@ -1,3 +1,11 @@
+data "terraform_remote_state" "eks" {
+  backend = "local"
+
+  config = {
+    path = "../provision/terraform.tfstate"
+  }
+}
+
 terraform {
   required_providers {
     aws = {
@@ -21,11 +29,11 @@ terraform {
 
 
 provider "aws" {
-  region = var.region
+  region = data.terraform_remote_state.eks.outputs.region
 }
 
 provider "kubernetes" {
-  host                   = module.eks.cluster_endpoint
+  host                   = data.terraform_remote_state.eks.outputs.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   exec {
     api_version = "client.authentication.k8s.io/v1beta1"
@@ -34,14 +42,14 @@ provider "kubernetes" {
       "eks",
       "get-token",
       "--cluster-name",
-      module.eks.cluster_name
+      data.terraform_remote_state.eks.outputs.cluster_name
     ]
   }
 }
 
 provider "helm" {
   kubernetes {
-    host                   = module.eks.cluster_endpoint
+    host                   = data.terraform_remote_state.eks.outputs.cluster_endpoint
     cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
     exec {
       api_version = "client.authentication.k8s.io/v1beta1"
@@ -50,14 +58,14 @@ provider "helm" {
         "eks",
         "get-token",
         "--cluster-name",
-        module.eks.cluster_name
+        data.terraform_remote_state.eks.outputs.cluster_name
       ]
     }
   }
 }
 
 provider "kubectl" {
-  host                   = module.eks.cluster_endpoint
+  host                   = data.terraform_remote_state.eks.outputs.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   exec {
     api_version = "client.authentication.k8s.io/v1beta1"
@@ -66,7 +74,7 @@ provider "kubectl" {
       "eks",
       "get-token",
       "--cluster-name",
-      module.eks.cluster_name
+      data.terraform_remote_state.eks.outputs.cluster_name
     ]
   }
 }

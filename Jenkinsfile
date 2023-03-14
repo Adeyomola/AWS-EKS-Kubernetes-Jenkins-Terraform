@@ -7,10 +7,20 @@ pipeline {
 	AWS_DEFAULT_REGION = "us-east-1"
     }
     stages {
+        stage("Create Backends") {
+            steps {
+                script {
+                    dir("backend") {
+                        sh "terraform init"
+                        sh "terraform apply -auto-approve"
+                    }
+                }
+            }
+        }
 	stage("Create Cluster With Prometheus and Grafana") {
 	    steps {
 		script {
-		    dir() {
+		    dir("provision") {
 			sh "terraform init"
 			sh "terraform apply -auto-approve"
 		    }
@@ -20,7 +30,7 @@ pipeline {
 	stage("Deploy App") {
 	    steps {
 		script {
-		    dir() {
+		    dir("deploy") {
 			sh "aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)"
 		    }
 		}
