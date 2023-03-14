@@ -9,3 +9,4 @@ variable "domain_name" {
 variable "namespaces" {
   type    = set(any)
   default = ["monitoring", "profilr", "sockapp"]
+}

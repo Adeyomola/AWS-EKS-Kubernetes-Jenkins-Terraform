@@ -18,9 +18,10 @@ resource "kubernetes_namespace" "namespaces" {
   }
 }
 
-data "kubernetes_service" "lb" {
+data "kubernetes_service_v1" "lb" {
   depends_on = [kubectl_manifest.deploy]
   metadata {
-    name = "app-service"
+    name      = "app-service"
+    namespace = "profilr"
   }
 }
