@@ -1,9 +1,10 @@
 resource "helm_release" "prometheus" {
   name       = "prometheus"
   namespace  = "monitoring"
-  version    = "36.2.0"
+  version    = "~> 45.0.0"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
+  wait       = false
 }
 
 #resource "helm_release" "aws_load_balancer_controller" {

@@ -3,7 +3,7 @@ variable "db_password" {}
 
 variable "domain_name" {
   type    = string
-  default = "adeyomola.me"
+  default = "adeyomola.tech"
 }
 
 variable "namespaces" {

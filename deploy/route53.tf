@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "primary" {
-  name = "simple-app${var.domain_name}"
+  name = var.domain_name
 }
 
 resource "aws_route53_record" "ingress_record" {
