@@ -1,0 +1,5 @@
+nginxServer: "http://app.profilr.svc.cluster.local:8080/stub_status"
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    release: prometheus
