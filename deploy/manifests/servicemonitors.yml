@@ -1,0 +1,36 @@
+#apiVersion: monitoring.coreos.com/v1
+#kind: ServiceMonitor
+#metadata:
+#  labels:
+#    release: prometheus
+#  name: app
+#  namespace: profilr
+#spec:
+#  endpoints:
+#  - interval: 60s
+#    port: app-port
+#  selector:
+#    matchLabels:
+#      app: app
+#---
+#apiVersion: monitoring.coreos.com/v1
+#kind: ServiceMonitor
+#metadata:
+#  labels:
+#    release: prometheus
+#  name: db
+#  namespace: profilr
+#spec:
+#  endpoints:
+#  - interval: 60s
+#    basicAuth:
+#      password:
+#        key: db-password
+#        name: db-secret
+#      username:
+#        key: db-user
+#        name: db-secret
+#    port: db-port
+#  selector:
+#    matchLabels:
+#      app: db

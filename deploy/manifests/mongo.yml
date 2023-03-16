@@ -37,6 +37,8 @@ kind: Service
 metadata:
   name: db-service
   namespace: profilr
+  labels:
+    app: db
 spec:
   selector:
     app: db
@@ -44,3 +46,4 @@ spec:
     - protocol: TCP
       port: 27017
       targetPort: 27017
+      name: db-port

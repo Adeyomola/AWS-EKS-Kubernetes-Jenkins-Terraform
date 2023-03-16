@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: adeyomola/mongo-app:latest
+        image: nanajanashia/k8s-demo-app:v1.0
         ports:
         - containerPort: 3000
         env:
@@ -42,6 +42,8 @@ kind: Service
 metadata:
   name: app-service
   namespace: profilr
+  labels:
+    app: app
 spec:
   type: LoadBalancer
   selector:
@@ -50,6 +52,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 3000
+      name: app-port
 #---
 #apiVersion: networking.k8s.io/v1
 #kind: Ingress

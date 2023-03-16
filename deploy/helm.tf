@@ -8,21 +8,37 @@ resource "helm_release" "prometheus" {
   wait             = false
 }
 
-resource "helm_release" "nginx_exporter" {
-  name       = "nginxexporter"
-  chart      = "prometheus-nginx-exporter"
+resource "helm_release" "mongodb_exporter_profilr" {
+  depends_on = [kubectl_manifest.deploy]
+  name       = "mongodbexporterp"
+  chart      = "prometheus-mongodb-exporter"
+  namespace  = "profilr"
   repository = "https://prometheus-community.github.io/helm-charts"
-  wait = false
-  values = ["${file("nginx_values.yml")}"]
+  wait       = false
+  values = ["${file("./values/db.yml")}"]
 }
 
-resource "helm_release" "mongodb_exporter" {
-  name       = "mongodbexporter"
+resource "helm_release" "mongodb_exporter_sock_shop" {
+  depends_on = [kubectl_manifest.deploy]
+  name       = "mongodbexporterss"
   chart      = "prometheus-mongodb-exporter"
+  namespace  = "sock-shop"
   repository = "https://prometheus-community.github.io/helm-charts"
-  wait = false
-  values = ["${file("mongodb_values.yml")}"]
+  wait       = false
+  values = ["${file("./values/cartsdb.yml")}",
+  "${file("./values/ordersdb.yml")}", "${file("./values/userdb.yml")}"]
 }
+
+#resource "helm_release" "nginx_exporter" {
+#  name       = "app"
+#  chart      = "prometheus-nginx-exporter"
+#  namespace  = "profilr"
+#  repository = "https://prometheus-community.github.io/helm-charts"
+#  wait       = false
+#  values     = ["${file("nginx_values.yml")}"]
+#}
+
+
 #resource "helm_release" "aws_load_balancer_controller" {
 #  depends_on = [module.aws_load_balancer_controller_iam_role]
 #  name       = "aws-load-balancer-controller"
