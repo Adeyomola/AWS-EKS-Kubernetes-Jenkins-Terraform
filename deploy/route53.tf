@@ -11,7 +11,7 @@ resource "aws_route53_record" "profilr" {
 }
 
 resource "aws_route53_record" "sock-shop" {
-  zone_id =  data.aws_route53_zone.selected.zone_id
+  zone_id = data.aws_route53_zone.selected.zone_id
   name    = "sock-shop.${var.domain_name}"
   type    = "CNAME"
   ttl     = "300"

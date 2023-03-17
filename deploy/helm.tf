@@ -9,13 +9,13 @@ resource "helm_release" "prometheus" {
 }
 
 resource "helm_release" "mongodb_exporter_profilr" {
-  depends_on = [kubectl_manifest.deploy]
+  depends_on = [kubectl_manifest.deploy, null_resource.db]
   name       = "mongodbexporterp"
   chart      = "prometheus-mongodb-exporter"
   namespace  = "profilr"
   repository = "https://prometheus-community.github.io/helm-charts"
   wait       = false
-  values = ["${file("./values/db.yml")}"]
+  values     = ["${file("./values/db.yml")}"]
 }
 
 resource "helm_release" "mongodb_exporter_sock_shop" {
