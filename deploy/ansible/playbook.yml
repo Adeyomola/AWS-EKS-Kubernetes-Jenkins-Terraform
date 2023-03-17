@@ -2,7 +2,7 @@
 - name: Create MongoDB Exporter Values for svc/db
   hosts: localhost
   vars_files: secrets.yml
-  become: true
+#  become: true
   connection: local
   tasks:
   - name: Template db.yml
