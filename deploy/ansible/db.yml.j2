@@ -1,0 +1,8 @@
+mongodb:
+  uri: "mongodb://{{ db_user }}:{{ db_password }}@db-service:27017/admin?authSource=admin"
+serviceMonitor:
+  interval: 30s
+  scrapeTimeout: 10s
+  enabled: true
+  additionalLabels:
+    release: prometheus
