@@ -36,17 +36,25 @@ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://a
 sudo apt-get update
 sudo apt-get install -y kubectl
 
-#install unzip
-sudo apt install unzip -y
+##install unzip
+#sudo apt install unzip -y
 
 #install aws-cli
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
+#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#unzip awscliv2.zip
+#sudo ./aws/install
+
+# install ansible
+sudo apt update
+sudo apt install software-properties-common -y
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible -y
+export PATH="~/.local/bin:$PATH"
+echo 'export PATH="~/.local/bin:$PATH' > .bashrc
 
 #install docker
 sudo apt update
-sudo apt-get install ca-certificates curl gnupg lsb-release -y
+sudo apt-get install gnupg lsb-release -y
 sudo mkdir -m 0755 -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo \
