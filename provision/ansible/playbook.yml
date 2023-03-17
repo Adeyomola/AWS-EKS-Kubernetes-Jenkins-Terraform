@@ -8,4 +8,4 @@
   - name: Template db.yml
     ansible.builtin.template:
       src: db.yml.j2
-      dest: ../values/db.yml
+      dest: ~/exam-cicd/deploy/values/db.yml
