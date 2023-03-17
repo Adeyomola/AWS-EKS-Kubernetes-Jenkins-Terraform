@@ -21,7 +21,9 @@ pipeline {
 	    steps {
 		script {
 		    dir("deploy") {
-			sh "aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)"
+			sh "terraform init"
+                        sh "terraform apply -auto-approve"
+			#sh "aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)"
 		    }
 		}
 	    {
