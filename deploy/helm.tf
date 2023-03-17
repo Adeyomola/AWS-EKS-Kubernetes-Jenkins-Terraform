@@ -15,7 +15,7 @@ resource "helm_release" "mongodb_exporter_profilr" {
   namespace  = "profilr"
   repository = "https://prometheus-community.github.io/helm-charts"
   wait       = false
-  values     = ["${file("./values/db.yml")}"]
+  values     = ["${file("../provision/ansible/db.yml")}"]
 }
 
 resource "helm_release" "mongodb_exporter_sock_shop" {
