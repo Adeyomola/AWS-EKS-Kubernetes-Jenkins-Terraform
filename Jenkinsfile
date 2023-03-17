@@ -15,10 +15,10 @@ pipeline {
                         sh "terraform apply -auto-approve"
                     }
                 }
+             }
             options {
                 timeout(time: 20, unit: 'MINUTES')
-                }
-             }
+            }
         }
         stage("Deploy App") {
             steps {
