@@ -9,7 +9,7 @@ resource "helm_release" "prometheus" {
 }
 
 resource "helm_release" "mongodb_exporter_profilr" {
-  depends_on = [kubectl_manifest.deploy, null_resource.db]
+  depends_on = [kubectl_manifest.deploy]
   name       = "mongodbexporterp"
   chart      = "prometheus-mongodb-exporter"
   namespace  = "profilr"
