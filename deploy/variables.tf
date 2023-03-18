@@ -13,5 +13,5 @@ variable "namespaces" {
 
 variable "namespaces_list" {
   description = "namespaces list"
-  value       = tolist(var.namespaces)
+  default       = ["profilr", "sock-shop"]
 }

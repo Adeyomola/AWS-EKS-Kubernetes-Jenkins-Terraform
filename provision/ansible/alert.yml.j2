@@ -7,10 +7,6 @@ additionalPrometheusRulesMap:
         expr: up == 0
         for: 1m
 config:
-    inhibit_rules:
-        equal:
-         - 'namespace'
-         - 'alertname'
     route:
       group_by: ['alertname']
       receiver: 'me'

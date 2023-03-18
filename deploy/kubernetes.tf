@@ -23,7 +23,7 @@ data "kubernetes_service_v1" "lb" {
   depends_on = [kubectl_manifest.deploy]
   metadata {
     name      = "app-service"
-    namespace = "profilr"
+    namespace = var.namespaces_list[0]
   }
 }
 
@@ -31,6 +31,6 @@ data "kubernetes_service_v1" "lb-sock-shop" {
   depends_on = [kubectl_manifest.deploy]
   metadata {
     name      = "front-end"
-    namespace = "sock-shop"
+    namespace = var.namespaces_list[1]
   }
 }
