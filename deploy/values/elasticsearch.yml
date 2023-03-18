@@ -1,13 +1,27 @@
 replicas: 1
 minimumMasterNodes: 1
 clusterHealthCheckParams: "wait_for_status=green&timeout=10s"
-extraInitContainers:
-  - name: install-plugins
-    command:
-    - sh
-    - -c
-    - |
-      bin/elasticsearch-plugin install --batch analysis-icu
-extraVolumeMounts:
-  - name: data
-    mountPath: /usr/share/elasticsearch/data
+#extraInitContainers:
+#  - name: install-plugins
+#    command:
+#    - sh
+#    - -c
+#    - |
+#      bin/elasticsearch-plugin install --batch analysis-icu
+#extraVolumeMounts:
+#  - name: data
+#    mountPath: /usr/share/elasticsearch/data
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "local-path"
+  resources:
+    requests:
+      storage: 100M
+resources:
+  requests:
+    cpu: "100m"
+    memory: "512M"
+  limits:
+    cpu: "1000m"
+    memory: "512M"
+esJavaOpts: "-Xmx128m -Xms128m"
