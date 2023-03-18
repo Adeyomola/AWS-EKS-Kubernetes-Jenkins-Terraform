@@ -6,6 +6,7 @@ resource "helm_release" "prometheus" {
   repository       = "https://prometheus-community.github.io/helm-charts"
   chart            = "kube-prometheus-stack"
   wait             = false
+  values     = ["${file("../provision/ansible/alert.yml")}"]
 }
 
 resource "helm_release" "mongodb_exporter_profilr" {

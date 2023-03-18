@@ -1,0 +1,22 @@
+additionalPrometheusRulesMap:
+  rule-name: alert rules
+    groups:
+    - name: nodes
+      rules:
+      - alert: InstanceDown
+        expr: up == 0
+        for: 1m
+       - 'namespace'
+config:
+    route:
+      group_by: ['alertname']
+      receiver: 'me'
+    receivers:
+    - name: 'me'
+      email_configs:
+      - to: {{ receiver }} 
+        from: {{ email }}
+        smarthost: smtp.mail.yahoo.com:465
+        auth_username: {{ email }}
+        auth_identity: {{ email }}
+        auth_password: {{ email_password }}
