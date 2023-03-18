@@ -24,16 +24,7 @@ resource "helm_release" "elasticsearch" {
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "elasticsearch"
   wait             = false
-}
-
-resource "helm_release" "kibana" {
-  name             = "kibana"
-  create_namespace = true
-  namespace        = "logging"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "kibana"
-  wait             = false
-  values           = ["${file("./values/kibana.yml")}"]
+  values           = ["${file("./values/elasticsearch.yml")}"]
 }
 
 resource "helm_release" "mongodb_exporter_profilr" {
