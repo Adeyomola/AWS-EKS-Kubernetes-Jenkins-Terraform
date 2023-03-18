@@ -22,7 +22,7 @@ resource "helm_release" "elasticsearch" {
   namespace  = "kube-system"
   repository = "https://helm.elastic.co"
   chart      = "elasticsearch"
-#  wait       = false
+  wait       = false
   values     = ["${file("./values/elasticsearch.yml")}"]
 }
 
