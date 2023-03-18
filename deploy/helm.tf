@@ -18,15 +18,6 @@ resource "helm_release" "fluentd" {
   wait             = false
 }
 
-resource "helm_release" "elasticsearch" {
-  name             = "elasticsearch"
-  namespace        = "logging"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "elasticsearch"
-  wait             = false
-  values           = ["${file("./values/elasticsearch.yml")}"]
-}
-
 resource "helm_release" "mongodb_exporter_profilr" {
   depends_on = [kubectl_manifest.deploy]
   name       = "mongodbexporter-${var.namespaces_list[0]}"
