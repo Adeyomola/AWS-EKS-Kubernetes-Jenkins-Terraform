@@ -1,3 +1,11 @@
 replicas: 1
 minimumMasterNodes: 1
 clusterHealthCheckParams: "wait_for_status=green&timeout=10s"
+initContainers:
+  - name: install-plugins
+    command:
+    - sh
+    - -c
+    - |
+      bin/elasticsearch-plugin install --batch analysis-icu
+
