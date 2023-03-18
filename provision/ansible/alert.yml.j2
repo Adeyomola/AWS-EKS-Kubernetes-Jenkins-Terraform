@@ -5,7 +5,7 @@ additionalPrometheusRulesMap:
       rules:
       - alert: InstanceDown
         expr: up == 0
-        for: 1m
+        for: 20s
 config:
     route:
       group_by: ['alertname']
