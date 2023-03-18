@@ -8,7 +8,7 @@ variable "domain_name" {
 
 variable "namespaces" {
   type    = set(any)
-  default = ["profilr", "sock-shop", "logging"]
+  default = ["profilr", "sock-shop"]
 }
 
 variable "namespaces_list" {
