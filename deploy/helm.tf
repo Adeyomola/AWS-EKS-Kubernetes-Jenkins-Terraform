@@ -21,6 +21,7 @@ resource "helm_release" "fluentd" {
 resource "helm_release" "elasticsearch" {
   name             = "elasticsearch"
   namespace        = "logging"
+  version = "8.5.1"
   repository       = "https://helm.elastic.co"
   chart            = "elasticsearch"
   wait             = false
