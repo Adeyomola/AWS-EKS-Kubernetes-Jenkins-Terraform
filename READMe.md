@@ -4,7 +4,7 @@ Create the following variables in a file called secrets.yml
 - db_password
 - email
 - receiver
-- email_password
+- email_password \n
 Then encrypt the secrets.yml file with ansible vault.
 
 ## CREATING THE S3 AND DYNAMO DB BACKEND FOR TERRAFORM
@@ -20,5 +20,5 @@ Then encrypt the secrets.yml file with ansible vault.
 ### JENKINS CREDENTIALS
 * Create an password file; add your ansible vault password to that file.
 * Then upload the file to a secret file credential with ID: `ANSIBLE_VAULT_PASSWORD_FILE`.
-* Create four secret texts with IDs: ```TF_VARS_db_user, TF_VARS_db_password, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY```
+* Create four secret texts with IDs: ```TF_VAR_db_user, TF_VAR_db_password, TF_VAR_email AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY```
 * Then Build
