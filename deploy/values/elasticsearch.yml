@@ -1,17 +1,1 @@
 replicas: 1
-minimumMasterNodes: 1
-clusterHealthCheckParams: "wait_for_status=green&timeout=10s"
-resources:
-  requests:
-    cpu: "100m"
-    memory: "512M"
-  limits:
-    cpu: "1000m"
-    memory: "512M"
-esJavaOpts: "-Xmx128m -Xms128m"
-sysctlInitContainer:
-  enabled: false
-antiAffinity: "soft"
-extraVolumeMounts:
-  - name: data
-    mountPath: /usr/share/elasticsearch/data
