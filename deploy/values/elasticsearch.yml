@@ -1,0 +1,3 @@
+client:
+  ingress:
+    enabled: true

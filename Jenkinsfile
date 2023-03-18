@@ -5,9 +5,10 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         AWS_DEFAULT_REGION = "us-east-1"
-	ANSIBLE_VAULT_PASSWORD_FILE = credentials('ANSIBLE_VAULT_PASSWORD_FILE')
-	TF_VAR_db_user = credentials ('TF_VAR_db_user')
-	TF_VAR_db_password = credentials ('TF_VAR_db_password')
+        ANSIBLE_VAULT_PASSWORD_FILE = credentials('ANSIBLE_VAULT_PASSWORD_FILE')
+        TF_VAR_db_user = credentials ('TF_VAR_db_user')
+        TF_VAR_db_password = credentials ('TF_VAR_db_password')
+        TF_VAR_email = credentials('TF_VAR_email')
     }
     stages {
         stage("Create Cluster With Prometheus and Grafana") {
@@ -33,5 +34,17 @@ pipeline {
                 }
             }
         }
+#        stage("Install Let'sEncrypt Certificat") {
+#            steps {
+#                script {
+#                    dir("ssl") {
+#                        sh "terraform init"
+#                        sh "terraform apply -auto-approve"
+#                    }
+#                }
+#             }
+#        }
     }
 }
+
+

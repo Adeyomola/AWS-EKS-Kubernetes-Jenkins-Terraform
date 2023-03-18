@@ -10,27 +10,28 @@ resource "helm_release" "prometheus" {
 }
 
 resource "helm_release" "fluentd" {
-  name             = "fluentd"
-  namespace        = "kube-system"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "fluentd"
-  wait             = false
+  name       = "fluentd"
+  namespace  = "kube-system"
+  repository = "https://charts.bitnami.com/bitnami"
+  chart      = "fluentd"
+  wait       = false
 }
 
 resource "helm_release" "elasticsearch" {
-  name             = "elasticsearch"
-  namespace        = "kube-system"
-  repository       = "https://charts.helm.sh/stable"
-  chart            = "elasticsearch"
-  wait             = false
+  name       = "elasticsearch"
+  namespace  = "kube-system"
+  repository = "https://charts.helm.sh/stable"
+  chart      = "elasticsearch"
+  wait       = false
+  values     = ["${file("./values/elasticsearch.yml")}"]
 }
 
 resource "helm_release" "kibana" {
-  name             = "kibana"
-  namespace        = "kube-system"
-  repository       = "https://charts.helm.sh/stable"
-  chart            = "kibana"
-  wait             = false
+  name       = "kibana"
+  namespace  = "kube-system"
+  repository = "https://charts.helm.sh/stable"
+  chart      = "kibana"
+  wait       = false
 }
 
 resource "helm_release" "mongodb_exporter_profilr" {
