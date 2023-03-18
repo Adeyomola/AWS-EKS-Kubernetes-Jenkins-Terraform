@@ -1,2 +1,5 @@
 global:
   kibanaEnabled: true
+ingress:
+  enabled: true
+  tls: true
