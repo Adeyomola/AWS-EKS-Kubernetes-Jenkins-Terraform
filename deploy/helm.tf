@@ -21,20 +21,10 @@ resource "helm_release" "fluentd" {
 resource "helm_release" "elasticsearch" {
   name             = "elasticsearch"
   namespace        = "logging"
-  version	   = "8.5.1"
-  repository       = "https://helm.elastic.co"
+  repository       = "https://charts.bitnami.com/bitnami"
   chart            = "elasticsearch"
   wait             = false
   values           = ["${file("./values/elasticsearch.yml")}"]
-}
-
-resource "helm_release" "kibana" {
-  name             = "kibana"
-  namespace        = "logging"
-  repository       = "https://charts.bitnami.com/bitnami"
-  chart            = "kibana"
-  wait             = false
-  values           = ["${file("./values/kibana.yml")}"]
 }
 
 resource "helm_release" "mongodb_exporter_profilr" {
