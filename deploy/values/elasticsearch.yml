@@ -4,4 +4,6 @@ client:
     httpGet:
       path: /_cluster/health?local=true
       port: 9200
-    initialDelaySeconds: 30
+    initialDelaySeconds: 1
+  ingress:
+    enabled: true
