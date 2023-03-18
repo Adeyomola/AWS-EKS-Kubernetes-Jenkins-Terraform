@@ -27,3 +27,4 @@ resources:
 esJavaOpts: "-Xmx128m -Xms128m"
 sysctlInitContainer:
   enabled: false
+antiAffinity: "soft"
