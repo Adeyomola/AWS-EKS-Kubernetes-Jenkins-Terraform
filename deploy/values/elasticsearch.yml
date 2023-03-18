@@ -11,12 +11,12 @@ clusterHealthCheckParams: "wait_for_status=green&timeout=10s"
 #extraVolumeMounts:
 #  - name: data
 #    mountPath: /usr/share/elasticsearch/data
-volumeClaimTemplate:
-  accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "local-path"
-  resources:
-    requests:
-      storage: 100M
+#volumeClaimTemplate:
+#  accessModes: [ "ReadWriteOnce" ]
+#  storageClassName: "local-path"
+#  resources:
+#    requests:
+#      storage: 100M
 resources:
   requests:
     cpu: "100m"
