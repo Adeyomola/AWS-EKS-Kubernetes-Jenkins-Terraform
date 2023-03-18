@@ -11,7 +11,6 @@ resource "helm_release" "prometheus" {
 
 resource "helm_release" "fluentd" {
   name             = "fluentd"
-  create_namespace = true
   namespace        = "logging"
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "fluentd"
