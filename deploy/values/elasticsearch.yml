@@ -1,7 +1,7 @@
 replicas: 1
 minimumMasterNodes: 1
 clusterHealthCheckParams: "wait_for_status=green&timeout=10s"
-initContainers:
+extraInitContainers:
   - name: install-plugins
     command:
     - sh
