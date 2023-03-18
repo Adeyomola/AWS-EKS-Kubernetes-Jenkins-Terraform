@@ -1,3 +1,8 @@
 client:
-  ingress:
-    enabled: true
+  replicas: 1
+  serviceType: NodePort
+  readinessProbe:
+    httpGet:
+      path: /_cluster/health?local=true
+      port: 9200
+    initialDelaySeconds: 5
