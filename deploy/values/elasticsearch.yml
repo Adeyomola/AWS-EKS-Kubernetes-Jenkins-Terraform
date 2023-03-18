@@ -1,5 +1,8 @@
 global:
   kibanaEnabled: true
 ingress:
+  hostname: 0.0.0.0
   enabled: true
   tls: true
+metrics:
+  enabled: true
