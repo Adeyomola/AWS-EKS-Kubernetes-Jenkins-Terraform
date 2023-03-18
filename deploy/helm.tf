@@ -7,10 +7,6 @@ resource "helm_release" "prometheus" {
   chart            = "kube-prometheus-stack"
   wait             = false
   values           = ["${file("../provision/ansible/alert.yml")}"]
-  provisioner "local-exec" {
-    command = "rm ../provision/ansible/alert.yml"
-  }
-
 }
 
 resource "helm_release" "fluentd" {
@@ -48,10 +44,6 @@ resource "helm_release" "mongodb_exporter_profilr" {
   repository = "https://prometheus-community.github.io/helm-charts"
   wait       = false
   values     = ["${file("../provision/ansible/db.yml")}"]
-  provisioner "local-exec" {
-    command = "rm ../provision/ansible/db.yml"
-  }
-
 }
 
 resource "helm_release" "mongodb_exporter_sock_shop" {
