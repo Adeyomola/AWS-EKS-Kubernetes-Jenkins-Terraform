@@ -13,5 +13,5 @@ variable "namespaces" {
 
 variable "namespaces_list" {
   description = "namespaces list"
-  default       = ["profilr", "sock-shop"]
+  default     = ["profilr", "sock-shop"]
 }

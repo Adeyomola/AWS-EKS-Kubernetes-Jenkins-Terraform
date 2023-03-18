@@ -1,0 +1,4 @@
+elasticsearch:
+  hosts:
+    - "elasticsearch"
+  port: 9200

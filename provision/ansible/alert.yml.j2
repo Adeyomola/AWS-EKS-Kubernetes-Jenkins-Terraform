@@ -8,7 +8,7 @@ additionalPrometheusRulesMap:
         for: 20s
 config:
     route:
-      group_by: ['alertname']
+      group_by: ['namespace']
       receiver: 'me'
     receivers:
     - name: 'me'

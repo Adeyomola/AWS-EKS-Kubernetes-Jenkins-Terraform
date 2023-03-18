@@ -13,6 +13,33 @@ resource "helm_release" "prometheus" {
 
 }
 
+resource "helm_release" "fluentd" {
+  name             = "fluentd"
+  create_namespace = true
+  namespace        = "logging"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "fluentd"
+  wait             = false
+}
+
+resource "helm_release" "elasticsearch" {
+  name             = "elasticsearch"
+  namespace        = "logging"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "elasticsearch"
+  wait             = false
+}
+
+resource "helm_release" "kibana" {
+  name             = "kibana"
+  create_namespace = true
+  namespace        = "logging"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "kibana"
+  wait             = false
+  values           = ["${file("./values/kibana.yml")}"]
+}
+
 resource "helm_release" "mongodb_exporter_profilr" {
   depends_on = [kubectl_manifest.deploy]
   name       = "mongodbexporter-${var.namespaces_list[0]}"
