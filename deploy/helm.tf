@@ -28,7 +28,7 @@ resource "helm_release" "elasticsearch" {
 }
 
 resource "helm_release" "aws_ebs_csi" {
-  name       = "aws_ebs_csi"
+  name       = "aws-ebs-csi"
   namespace  = "kube-system"
   repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
   chart      = "aws-ebs-csi-driver"
