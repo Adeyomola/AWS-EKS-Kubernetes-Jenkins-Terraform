@@ -20,10 +20,10 @@ resource "helm_release" "fluentd" {
 resource "helm_release" "elasticsearch" {
   name       = "elasticsearch"
   namespace  = "kube-system"
-  repository = "https://charts.helm.sh/stable"
+  repository = "https://helm.elastic.co"
   chart      = "elasticsearch"
   wait       = false
-  values     = ["${file("./values/elasticsearch.yml")}"]
+#  values     = ["${file("./values/elasticsearch.yml")}"]
 }
 
 resource "helm_release" "kibana" {

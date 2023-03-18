@@ -1,9 +1,0 @@
-client:
-  replicas: 1
-  readinessProbe:
-    httpGet:
-      path: /_cluster/health?local=true
-      port: 9200
-    initialDelaySeconds: 1
-  ingress:
-    enabled: true
