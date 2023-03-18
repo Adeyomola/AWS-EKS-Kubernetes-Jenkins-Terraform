@@ -1,4 +1,16 @@
+additionalPrometheusRulesMap:
+  rule-name: alert rules
+    groups:
+    - name: nodes
+      rules:
+      - alert: InstanceDown
+        expr: up == 0
+        for: 1m
 config:
+    inhibit_rules:
+        equal:
+         - 'namespace'
+         - 'alertname'
     route:
       group_by: ['alertname']
       receiver: 'me'
@@ -11,11 +23,3 @@ config:
         auth_username: {{ email }}
         auth_identity: {{ email }}
         auth_password: {{ email_password }}
-additionalPrometheusRulesMap:
-  rule-name: alert rules
-    groups:
-    - name: nodes
-      rules:
-      - alert: InstanceDown
-        expr: up == 0
-        for: 1m
