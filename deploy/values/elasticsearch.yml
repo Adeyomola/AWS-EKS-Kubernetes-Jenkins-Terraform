@@ -1,6 +1,6 @@
 replicas: 1
 minimumMasterNodes: 1
-clusterHealthCheckParams: "wait_for_status=green&timeout=1s"
+clusterHealthCheckParams: "wait_for_status=green&timeout=10s"
 extraInitContainers:
   - name: install-plugins
     command:
@@ -11,8 +11,3 @@ extraInitContainers:
 extraVolumeMounts:
   - name: data
     mountPath: /usr/share/elasticsearch/data
-#volumeClaimTemplate:
-#  accessModes: ["ReadWriteOnce"]
-#  resources:
-#    requests:
-#      storage: 5Gi
