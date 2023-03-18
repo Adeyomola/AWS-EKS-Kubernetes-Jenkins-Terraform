@@ -6,7 +6,6 @@ additionalPrometheusRulesMap:
       - alert: InstanceDown
         expr: up == 0
         for: 1m
-       - 'namespace'
 config:
     route:
       group_by: ['alertname']
