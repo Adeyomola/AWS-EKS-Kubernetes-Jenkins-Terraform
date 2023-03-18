@@ -25,3 +25,5 @@ resources:
     cpu: "1000m"
     memory: "512M"
 esJavaOpts: "-Xmx128m -Xms128m"
+sysctlInitContainer:
+  enabled: false
