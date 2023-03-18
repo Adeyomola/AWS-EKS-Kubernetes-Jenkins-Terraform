@@ -11,7 +11,7 @@ resource "helm_release" "prometheus" {
 
 resource "helm_release" "fluentd" {
   name             = "fluentd"
-  namespace        = "logging"
+  namespace        = "kube-system"
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "fluentd"
   wait             = false
