@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "state_bucket" {
-  bucket = "adeyomola-tfstate-bucket"
+  bucket        = var.bucket_name
   force_destroy = true
 }
 
@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "backend_policy_document" {
 
   statement {
     actions   = ["s3:ListBucket"]
-    resources = ["arn:aws:s3:::adeyomola-tfstate-bucket"]
+    resources = ["arn:aws:s3:::${var.bucket_name}"]
     effect    = "Allow"
     principals {
       type        = "*"
@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "backend_policy_document" {
 
   statement {
     actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-    resources = ["arn:aws:s3:::adeyomola-tfstate-bucket/terraform.tfstate"]
+    resources = ["arn:aws:s3:::${var.bucket_name}/*"]
     effect    = "Allow"
     principals {
       type        = "*"

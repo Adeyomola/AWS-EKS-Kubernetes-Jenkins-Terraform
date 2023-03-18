@@ -10,3 +10,8 @@ variable "namespaces" {
   type    = set(any)
   default = ["profilr", "sock-shop"]
 }
+
+variable "namespaces_list" {
+  description = "namespaces list"
+  value       = tolist(var.namespaces)
+}

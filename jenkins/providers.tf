@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "adeyomola-tfstate-bucket"
+    bucket         = var.bucket_name
     key            = "jenkins/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "adeyomola_dynamodb"
+    dynamodb_table = var.table_name
   }
   required_providers {
     aws = {

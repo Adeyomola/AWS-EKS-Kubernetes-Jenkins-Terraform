@@ -4,7 +4,7 @@ resource "aws_instance" "jenkins" {
   vpc_security_group_ids      = [aws_security_group.jenkins_sg.id]
   user_data                   = file("user_data.sh")
   associate_public_ip_address = true
-  key_name                    = "windows11"
+  key_name                    = var.key_name
   root_block_device {
     volume_size = 15
   }

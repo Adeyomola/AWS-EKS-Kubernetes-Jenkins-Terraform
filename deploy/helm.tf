@@ -15,9 +15,9 @@ resource "helm_release" "prometheus" {
 
 resource "helm_release" "mongodb_exporter_profilr" {
   depends_on = [kubectl_manifest.deploy]
-  name       = "mongodbexporterp"
+  name       = "mongodbexporter-${var.namespaces_list[0]}"
   chart      = "prometheus-mongodb-exporter"
-  namespace  = "profilr"
+  namespace  = var.namespaces_list[0]
   repository = "https://prometheus-community.github.io/helm-charts"
   wait       = false
   values     = ["${file("../provision/ansible/db.yml")}"]
@@ -29,9 +29,9 @@ resource "helm_release" "mongodb_exporter_profilr" {
 
 resource "helm_release" "mongodb_exporter_sock_shop" {
   depends_on = [kubectl_manifest.deploy]
-  name       = "mongodbexporterss"
+  name       = "mongodbexporter${var.namespaces_list[1]}"
   chart      = "prometheus-mongodb-exporter"
-  namespace  = "sock-shop"
+  namespace  = var.namespaces_list[1]
   repository = "https://prometheus-community.github.io/helm-charts"
   wait       = false
   values = ["${file("./values/cartsdb.yml")}",

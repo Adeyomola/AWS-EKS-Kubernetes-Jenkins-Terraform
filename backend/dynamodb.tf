@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "state_locking" {
-  name           = "adeyomola_dynamodb"
+  name           = var.table_name
   hash_key       = "LockID"
   read_capacity  = 10
   write_capacity = 10
