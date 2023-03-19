@@ -34,16 +34,16 @@ pipeline {
                 }
             }
         }
-        // stage("Install Let'sEncrypt Certificat") {
-        //     steps {
-        //         script {
-        //             dir("ssl") {
-        //                 sh "terraform init"
-        //                 sh "terraform apply -auto-approve"
-        //             }
-        //         }
-        //      }
-        // }
+        stage("Install Let'sEncrypt Certificat") {
+            steps {
+                script {
+                    dir("ssl") {
+                        sh "terraform init"
+                        sh "terraform apply -auto-approve"
+                    }
+                }
+            }
+        }
     }
 }
 
