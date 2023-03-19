@@ -312,7 +312,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 443
+  - port: 80
     targetPort: 8079
   selector:
     name: front-end
