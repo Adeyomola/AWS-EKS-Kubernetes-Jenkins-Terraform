@@ -1,10 +1,24 @@
-#replicas: 1
+replicas: 1
 #clusterHealthCheckParams: "timeout=60s"
-#resources:
-#  requests:
-#    storage: "30Gi"
-#    cpu: "1000m"
-#    memory: "512Mi"
-#  limits:
-#    cpu: "1000m"
-#    memory: "512Mi"
+# init container to install the azure repository plugin for backup snapshots
+extraInitContainers:
+  - name: install-plugins
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+    imagePullPolicy: IfNotPresent
+    command:
+    - sh
+    - -c
+    - |
+      bin/elasticsearch-plugin install --batch repository-azure
+    volumeMounts:
+    - name: plugins
+      mountPath: /usr/share/elasticsearch/plugins
+
+# Volume mount to store the repository-azure plugin
+extraVolumes:
+  - name: plugins
+    emptyDir: {}
+extraVolumeMounts:
+  - name: plugins
+    mountPath: /usr/share/elasticsearch/plugins
+    readOnly: false
