@@ -318,9 +318,9 @@ spec:
   - port: 443
     targetPort: 8079
     name: port
-#  - port: 80
-#    targetPort: 8079
-#    name: port-2
+  - port: 80
+    targetPort: 8079
+    name: port-2
   selector:
     name: front-end
 ---
