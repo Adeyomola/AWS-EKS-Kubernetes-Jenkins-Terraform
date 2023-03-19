@@ -44,8 +44,8 @@ pipeline {
                 }
             }
 		options {
-                	retry(2)
-            	}
+                    retry(2)
+		}
         }
     }
 }
