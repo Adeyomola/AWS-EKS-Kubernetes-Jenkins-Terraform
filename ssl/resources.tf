@@ -10,7 +10,7 @@ resource "acme_registration" "reg" {
 resource "acme_certificate" "profilr" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = "${var.namespaces[0]}.${var.domain_name}"
-  subject_alternative_names = [data.terraform_remote_state.eks.outputs.profilr_dns]
+#  subject_alternative_names = [data.terraform_remote_state.eks.outputs.profilr_dns]
   dns_challenge {
     provider = "route53"
   }
@@ -19,7 +19,7 @@ resource "acme_certificate" "profilr" {
 resource "acme_certificate" "sock-shop" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = "${var.namespaces[1]}.${var.domain_name}"
-  subject_alternative_names = [data.terraform_remote_state.eks.outputs.sock_shop_dns]
+#  subject_alternative_names = [data.terraform_remote_state.eks.outputs.sock_shop_dns]
   dns_challenge {
     provider = "route53"
   }
