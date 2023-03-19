@@ -3,3 +3,4 @@ readinessProbe:
  timeoutSeconds: 30
 persistence:
   enabled: false
+clusterHealthCheckParams: "wait_for_status=green&timeout=100s"
