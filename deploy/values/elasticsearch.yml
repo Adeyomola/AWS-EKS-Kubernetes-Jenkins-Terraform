@@ -2,9 +2,4 @@ replicas: 1
 clusterHealthCheckParams: "timeout=60s"
 resources:
   requests:
-    cpu: "1000m"
-    memory: "512Mi"
     storage: "5Gi"
-  limits:
-    cpu: "1000m"
-    memory: "512Mi"
