@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage("Install Let'sEncrypt Certificat") {
+        stage("Install Let'sEncrypt Certificate") {
             steps {
                 script {
                     dir("ssl") {
@@ -43,6 +43,9 @@ pipeline {
                     }
                 }
             }
+		options {
+                	retry(2)
+            	}
         }
     }
 }
