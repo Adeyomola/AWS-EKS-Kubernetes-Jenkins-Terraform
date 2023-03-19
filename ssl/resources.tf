@@ -14,3 +14,11 @@ resource "acme_certificate" "certificate" {
     provider = "route53"
   }
 }
+
+resource "acme_certificate" "certificate2" {
+  account_key_pem = acme_registration.reg.account_key_pem
+  common_name     = "profilr.adeyomola.tech"
+  dns_challenge {
+    provider = "route53"
+  }
+}
