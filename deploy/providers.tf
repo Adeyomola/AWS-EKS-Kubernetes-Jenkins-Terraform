@@ -38,7 +38,8 @@ terraform {
 
 
 provider "aws" {
-  region = data.terraform_remote_state.eks.outputs.region
+#  region = data.terraform_remote_state.eks.outputs.region
+region = "us-east-1"
 }
 
 provider "kubernetes" {

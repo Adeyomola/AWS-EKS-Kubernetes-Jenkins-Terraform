@@ -1,4 +1,5 @@
 replicas: 1
+readinessProbe:
+ timeoutSeconds: 30
 persistence:
-  storageClass: gp2
-  capacity: "5Gi"
+  enabled: false
