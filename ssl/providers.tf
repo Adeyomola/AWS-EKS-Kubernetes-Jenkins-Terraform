@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = var.bucket_name
+    bucket         = "adeyomola-tfstate-bucket"
     key            = "ssl/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = var.table_name
+    dynamodb_table = "adeyomola_dynamodb"
   }
   required_providers {
     acme = {
