@@ -1,2 +1,4 @@
 replicas: 1
-clusterHealthCheckParams:
+persistence:
+  storageClass: gp2
+  capacity: "5Gi"
