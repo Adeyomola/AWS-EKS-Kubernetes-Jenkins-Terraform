@@ -18,7 +18,7 @@ resource "helm_release" "fluentd" {
 }
 
 resource "helm_release" "elasticsearch" {
-  depends_on = [helm_release.aws_ebs_csi]
+#  depends_on = [helm_release.aws_ebs_csi]
   name       = "elasticsearch"
   namespace  = "kube-system"
   repository = "https://helm.elastic.co"
@@ -27,13 +27,13 @@ resource "helm_release" "elasticsearch" {
 #  values     = ["${file("./values/elasticsearch.yml")}"]
 }
 
-resource "helm_release" "aws_ebs_csi" {
-  name       = "aws-ebs-csi"
-  namespace  = "kube-system"
-  repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
-  chart      = "aws-ebs-csi-driver"
-  wait       = false
-}
+#resource "helm_release" "aws_ebs_csi" {
+#  name       = "aws-ebs-csi"
+#  namespace  = "kube-system"
+#  repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
+#  chart      = "aws-ebs-csi-driver"
+#  wait       = false
+#}
 
 resource "helm_release" "kibana" {
   name       = "kibana"
