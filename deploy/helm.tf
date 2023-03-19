@@ -18,7 +18,7 @@ resource "helm_release" "fluentd" {
 }
 
 resource "helm_release" "elasticsearch" {
-#  depends_on = [helm_release.aws_ebs_csi]
+  #  depends_on = [helm_release.aws_ebs_csi]
   name       = "elasticsearch"
   namespace  = "kube-system"
   repository = "https://helm.elastic.co"
