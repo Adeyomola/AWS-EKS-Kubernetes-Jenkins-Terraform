@@ -9,7 +9,7 @@ resource "acme_registration" "reg" {
 
 resource "acme_certificate" "certificate" {
   account_key_pem = acme_registration.reg.account_key_pem
-  common_name     = "sock-shop.adeyomola.tech"
+  common_name     = ""${var.namespaces[1]}.${var.domain_name}""
   dns_challenge {
     provider = "route53"
   }
@@ -17,7 +17,7 @@ resource "acme_certificate" "certificate" {
 
 resource "acme_certificate" "certificate2" {
   account_key_pem = acme_registration.reg.account_key_pem
-  common_name     = "profilr.adeyomola.tech"
+  common_name     = "${var.namespaces[0]}.${var.domain_name}"
   dns_challenge {
     provider = "route53"
   }
