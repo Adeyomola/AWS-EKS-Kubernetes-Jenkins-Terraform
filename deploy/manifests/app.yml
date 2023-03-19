@@ -57,10 +57,10 @@ spec:
       port: 443
       targetPort: 3000
       name: app-port
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
-      name: app-port-2
+#    - protocol: TCP
+#      port: 80
+#      targetPort: 3000
+#      name: app-port-2
 #---
 #apiVersion: networking.k8s.io/v1
 #kind: Ingress
@@ -82,4 +82,5 @@ spec:
 #              name: app-service
 #              port:
 #                number: 80
+
 
