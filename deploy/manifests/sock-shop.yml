@@ -305,7 +305,10 @@ kind: Service
 metadata:
   name: front-end
   annotations:
-        prometheus.io/scrape: 'true'
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: ${ssl_certificate}
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443, 80"
+    prometheus.io/scrape: 'true'
   labels:
     name: front-end
   namespace: sock-shop
@@ -314,6 +317,10 @@ spec:
   ports:
   - port: 443
     targetPort: 8079
+    name: port
+  - port: 80
+    targetPort: 8079
+    name: port-2
   selector:
     name: front-end
 ---

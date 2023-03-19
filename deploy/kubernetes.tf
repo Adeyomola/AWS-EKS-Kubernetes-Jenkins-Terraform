@@ -1,8 +1,9 @@
 data "kubectl_path_documents" "manifests" {
   pattern = "${path.module}/manifests/*.yml"
   vars = {
-    db_user     = var.db_user
-    db_password = var.db_password
+    db_user         = var.db_user
+    db_password     = var.db_password
+    ssl_certificate = data.terraform_remote_state.ssl.outputs.cert
   }
 }
 

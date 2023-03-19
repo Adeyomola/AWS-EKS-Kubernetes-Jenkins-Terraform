@@ -24,16 +24,6 @@ pipeline {
                 timeout(time: 20, unit: 'MINUTES')
             }
         }
-        stage("Deploy App") {
-            steps {
-                script {
-                    dir("deploy") {
-                        sh "terraform init"
-                        sh "terraform apply -auto-approve"
-                    }
-                }
-            }
-        }
         stage("Install Let'sEncrypt Certificate") {
             steps {
                 script {
@@ -46,6 +36,16 @@ pipeline {
 		options {
                     retry(3)
 		}
+        }
+        stage("Deploy App") {
+            steps {
+                script {
+                    dir("deploy") {
+                        sh "terraform init"
+                        sh "terraform apply -auto-approve"
+                    }
+                }
+            }
         }
     }
 }

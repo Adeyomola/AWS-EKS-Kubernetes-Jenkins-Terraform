@@ -1,4 +1,3 @@
-
 terraform {
   backend "s3" {
     bucket         = "adeyomola-tfstate-bucket"
@@ -24,14 +23,4 @@ provider "acme" {
 
 provider "aws" {
   region = "us-east-1"
-}
-
-data "terraform_remote_state" "eks" {
-  backend = "s3"
-
-  config = {
-    key    = "deploy/terraform.tfstate"
-    bucket = "adeyomola-tfstate-bucket"
-    region = "us-east-1"
-  }
 }

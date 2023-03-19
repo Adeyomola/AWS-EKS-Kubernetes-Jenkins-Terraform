@@ -8,6 +8,16 @@ data "terraform_remote_state" "eks" {
   }
 }
 
+data "terraform_remote_state" "ssl" {
+  backend = "s3"
+
+  config = {
+    key    = "ssl/terraform.tfstate"
+    bucket = "adeyomola-tfstate-bucket"
+    region = "us-east-1"
+  }
+}
+
 terraform {
   backend "s3" {
     bucket         = "adeyomola-tfstate-bucket"
