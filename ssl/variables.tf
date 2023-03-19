@@ -8,6 +8,11 @@ variable "bucket_name" {
   default     = "adeyomola-tfstate-bucket"
 }
 
+variable "namespaces" {
+  description = "namespaces list"
+  default     = ["profilr", "sock-shop"]
+}
+
 variable "domain_name" {
   type    = string
   default = "adeyomola.tech"
