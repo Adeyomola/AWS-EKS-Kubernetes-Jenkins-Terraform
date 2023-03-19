@@ -24,7 +24,7 @@ resource "helm_release" "elasticsearch" {
   repository = "https://helm.elastic.co"
   chart      = "elasticsearch"
   wait       = false
-  values     = ["${file("./values/elasticsearch.yml")}"]
+#  values     = ["${file("./values/elasticsearch.yml")}"]
 }
 
 resource "helm_release" "aws_ebs_csi" {
