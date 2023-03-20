@@ -5,3 +5,5 @@ metadata:
   namespace: profilr
 data:
   db-url: db-service
+  db-name: altschool
+

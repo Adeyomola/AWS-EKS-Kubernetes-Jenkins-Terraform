@@ -43,10 +43,10 @@ resource "helm_release" "kibana" {
   wait       = false
 }
 
-resource "helm_release" "mongodb_exporter_profilr" {
+resource "helm_release" "mysql_exporter_profilr" {
   depends_on = [kubectl_manifest.deploy]
-  name       = "mongodbexporter-${var.namespaces_list[0]}"
-  chart      = "prometheus-mongodb-exporter"
+  name       = "mysqlexporter-${var.namespaces_list[0]}"
+  chart      = "prometheus-mysql-exporter"
   namespace  = var.namespaces_list[0]
   repository = "https://prometheus-community.github.io/helm-charts"
   wait       = false

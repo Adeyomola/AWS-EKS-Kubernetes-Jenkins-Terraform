@@ -1,8 +1,15 @@
-mongodb:
-  uri: "mongodb://{{ db_user }}:{{ db_password }}@db-service:27017/admin?authSource=admin"
 serviceMonitor:
-  interval: 30s
-  scrapeTimeout: 10s
+  # enabled should be set to true to enable prometheus-operator discovery of this service
   enabled: true
   additionalLabels:
     release: prometheus
+
+mysql:
+  db: "altschool"
+  host: "db-service"
+  param: ""
+  pass: {{ db_password }}
+  port: 3306
+  protocol: ""
+  user: {{ db_user }}
+

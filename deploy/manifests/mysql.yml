@@ -17,20 +17,30 @@ spec:
     spec:
       containers:
       - name: db
-        image: mongo
+        image: adeyomola/mysql:latest
         ports:
         - containerPort: 27017
         env:
-        - name: MONGO_INITDB_ROOT_USERNAME
-          valueFrom: 
+        - name: MYSQL_USER
+          valueFrom:
             secretKeyRef:
               name: db-secret
               key: db-user
-        - name: MONGO_INITDB_ROOT_PASSWORD
-          valueFrom: 
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
             secretKeyRef:
               name: db-secret
               key: db-password
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: db-password
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: db-name
 ---
 apiVersion: v1
 kind: Service
@@ -44,6 +54,6 @@ spec:
     app: db
   ports:
     - protocol: TCP
-      port: 27017
-      targetPort: 27017
+      port: 3306
+      targetPort: 3306
       name: db-port
