@@ -38,7 +38,7 @@ resource "helm_release" "elasticsearch" {
 resource "helm_release" "kibana" {
   name       = "kibana"
   namespace  = "kube-system"
-  repository = "https://charts.helm.sh/stable"
+  repository = "https://helm.elastic.co"
   chart      = "kibana"
   wait       = false
 }
