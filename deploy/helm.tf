@@ -39,6 +39,7 @@ resource "helm_release" "kibana" {
   name       = "kibana"
   namespace  = "kube-system"
   repository = "https://helm.elastic.co"
+  version = "~> 8.4.0"
   chart      = "kibana"
   wait       = false
   values     = ["${file("./values/kibana.yml")}"]
