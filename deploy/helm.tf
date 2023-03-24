@@ -41,6 +41,7 @@ resource "helm_release" "kibana" {
   repository = "https://helm.elastic.co"
   chart      = "kibana"
   wait       = false
+  values     = ["${file("./values/kibana.yml")}"]
 }
 
 resource "helm_release" "mysql_exporter_profilr" {
