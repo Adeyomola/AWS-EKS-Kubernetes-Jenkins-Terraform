@@ -1,6 +1,7 @@
 replicas: 1
 readinessProbe:
+ initialDelaySeconds: 200
  timeoutSeconds: 30
 persistence:
   enabled: false
-#clusterHealthCheckParams: "wait_for_status=green&timeout=100s"
+clusterHealthCheckParams: "wait_for_status=yellow&timeout=2s"
