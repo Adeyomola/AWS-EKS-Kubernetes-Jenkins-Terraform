@@ -1,1 +1,2 @@
-elasticsearchHosts: "http://localhost:9200"
+service:
+ type: LoadBalancer

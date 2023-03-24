@@ -1,7 +1,9 @@
-replicas: 1
+minimumMasterNodes: 1
 readinessProbe:
  initialDelaySeconds: 200
  timeoutSeconds: 30
 persistence:
   enabled: false
-clusterHealthCheckParams: "wait_for_status=yellow&timeout=2s"
+service:
+ type: LoadBalancer
+#protocol: http
