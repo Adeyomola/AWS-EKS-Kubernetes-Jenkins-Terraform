@@ -24,6 +24,7 @@ resource "helm_release" "elasticsearch" {
   repository = "https://helm.elastic.co"
   chart      = "elasticsearch"
   wait       = false
+  version = "7.2.0"
   values     = ["${file("./values/elasticsearch.yml")}"]
 }
 
@@ -41,6 +42,7 @@ resource "helm_release" "kibana" {
   repository = "https://helm.elastic.co"
   chart      = "kibana"
   wait       = false
+  version = "7.2.0"
   values     = ["${file("./values/kibana.yml")}"]
 }
 
