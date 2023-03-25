@@ -31,3 +31,9 @@ EKS Overview: ![Alt](/screenshots/EKS%20overview.png)
 EKS Cluster Nodes and Node Groups: ![Alt](/screenshots/EKS%20Cluster%20Nodes.png)
 
 EKS VPC: ![Alt](/screenshots/eks%20vpc.png)
+
+Deployment Output: ![Alt](/screenshots/Deployment%20Output.png)
+
+S3 Bucket: ![Alt](/screenshots/S3%20bucket.png)
+
+DynamoDB Items: ![Alt](/screenshots/DynamoDB%20Items.png)

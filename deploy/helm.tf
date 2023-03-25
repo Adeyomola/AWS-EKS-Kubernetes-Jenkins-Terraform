@@ -35,15 +35,14 @@ resource "helm_release" "elasticsearch" {
 #  wait       = false
 #}
 
-#resource "helm_release" "kibana" {
-# depends_on = [helm_release.elasticsearch]
-#  name       = "kibana"
-#  namespace  = "kube-system"
-#  repository = "https://helm.elastic.co"
-#  chart      = "kibana"
-#  wait       = false
-#  values     = ["${file("./values/kibana.yml")}"]
-#}
+resource "helm_release" "kibana" {
+  name       = "kibana"
+  namespace  = "kube-system"
+  repository = "https://helm.elastic.co"
+  chart      = "kibana"
+  wait       = false
+  values     = ["${file("./values/kibana.yml")}"]
+}
 
 resource "helm_release" "mysql_exporter_profilr" {
   depends_on = [kubectl_manifest.deploy]
