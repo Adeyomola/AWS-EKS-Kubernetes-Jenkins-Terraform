@@ -37,6 +37,7 @@ resource "helm_release" "elasticsearch" {
 
 resource "helm_release" "kibana" {
   name       = "kibana"
+  cleanup_on_fail = true
   namespace  = "kube-system"
   repository = "https://helm.elastic.co"
   chart      = "kibana"
