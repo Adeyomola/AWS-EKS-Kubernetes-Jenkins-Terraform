@@ -9,39 +9,14 @@ resource "helm_release" "prometheus" {
   values           = ["${file("../provision/ansible/alert.yml")}"]
 }
 
-resource "helm_release" "fluentd" {
-  name       = "fluentd"
-  namespace  = "kube-system"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "fluentd"
-  wait       = false
-}
-
-resource "helm_release" "elasticsearch" {
-  #  depends_on = [helm_release.aws_ebs_csi]
-  name       = "elasticsearch"
-  namespace  = "kube-system"
-  repository = "https://helm.elastic.co"
-  chart      = "elasticsearch"
-  wait       = false
-  values     = ["${file("./values/elasticsearch.yml")}"]
-}
-
-#resource "helm_release" "aws_ebs_csi" {
-#  name       = "aws-ebs-csi"
-#  namespace  = "kube-system"
-#  repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
-#  chart      = "aws-ebs-csi-driver"
-#  wait       = false
-#}
-
-resource "helm_release" "kibana" {
-  name       = "kibana"
-  namespace  = "kube-system"
-  repository = "https://helm.elastic.co"
-  chart      = "kibana"
-  wait       = false
-  values     = ["${file("./values/kibana.yml")}"]
+resource "helm_release" "loki" {
+  name             = "loki"
+  create_namespace = true
+  namespace        = "logging"
+  repository       = "https://grafana.github.io/helm-charts"
+  chart            = "loki-stack"
+  wait             = false
+  values = ["${file("./values/loki.yml")}"]
 }
 
 resource "helm_release" "mysql_exporter_profilr" {
@@ -64,6 +39,33 @@ resource "helm_release" "mongodb_exporter_sock_shop" {
   values = ["${file("./values/cartsdb.yml")}",
   "${file("./values/ordersdb.yml")}", "${file("./values/userdb.yml")}"]
 }
+
+#resource "helm_release" "loki" {
+#  #  depends_on = [helm_release.aws_ebs_csi]
+#  name       = "elasticsearch"
+#  namespace  = "kube-system"
+#  repository = "https://helm.elastic.co"
+#  chart      = "elasticsearch"
+#  wait       = false
+#  values     = ["${file("./values/elasticsearch.yml")}"]
+#}
+
+#resource "helm_release" "aws_ebs_csi" {
+#  name       = "aws-ebs-csi"
+#  namespace  = "kube-system"
+#  repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
+#  chart      = "aws-ebs-csi-driver"
+#  wait       = false
+#}
+
+#resource "helm_release" "kibana" {
+#  name       = "kibana"
+#  namespace  = "kube-system"
+#  repository = "https://helm.elastic.co"
+#  chart      = "kibana"
+#  wait       = false
+#  values     = ["${file("./values/kibana.yml")}"]
+#}
 
 #resource "helm_release" "nginx_exporter" {
 #  name       = "app"
