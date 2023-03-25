@@ -6,6 +6,8 @@ Grafana: ![Alt](/screenshots/Grafana.png)
 
 Jenkins: ![Alt](/screenshots/Jenkins%20server.png)
 
+Jenkins Terraform Apply Output: ![Alt](/screenshots/Jenkins%20Output.png)
+
 Kibana: ![Alt](/screenshots/kibana%20sample%20logs.png)
 
 Prometheus Alerts: ![Alt](/screenshots/Prometheus%20alerts.png)
@@ -19,3 +21,7 @@ Simple App LetsEncrypt SSL: ![Alt](/screenshots/simple%20app%20letsencrypt%20ssl
 Sock-Shop: ![Alt](/screenshots/sock-shop.png)
 
 Sock-Shop LetsEncrypt SSL: ![Alt](/screenshots/sock-shop%20letsencrypt%20ssl.png)
+
+LetsEncrypt Certificate Creation Output: ![Alt](/screenshots/LetsEncrypt%20Output.png)
+
+EKS Provisioning Output: ![Alt](/screenshots/EKS%20Provision%20Output.png)
