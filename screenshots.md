@@ -25,3 +25,7 @@ Sock-Shop LetsEncrypt SSL: ![Alt](/screenshots/sock-shop%20letsencrypt%20ssl.png
 LetsEncrypt Certificate Creation Output: ![Alt](/screenshots/LetsEncrypt%20Output.png)
 
 EKS Provisioning Output: ![Alt](/screenshots/EKS%20Provision%20Output.png)
+
+EKS Overview: ![Alt](/screenshots/EKS%20overview.png)
+
+EKS Cluster Nodes and Node Groups: ![Alt](/screenshots/EKS%20Cluster%20Nodes.png)
