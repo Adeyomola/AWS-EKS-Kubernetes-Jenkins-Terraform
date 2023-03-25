@@ -1,9 +1,0 @@
-minimumMasterNodes: 1
-readinessProbe:
-  timeoutSeconds: 30
-  initialDelaySeconds: 200
-persistence:
-  enabled: false
-service:
-  type: LoadBalancer
-protocol: http
