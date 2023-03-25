@@ -21,7 +21,7 @@ resource "helm_release" "elasticsearch" {
   #  depends_on = [helm_release.aws_ebs_csi]
   name       = "elasticsearch"
   namespace  = "kube-system"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "https://helm.elastic.co"
   chart      = "elasticsearch"
   wait       = false
   values     = ["${file("./values/elasticsearch.yml")}"]
@@ -38,7 +38,7 @@ resource "helm_release" "elasticsearch" {
 resource "helm_release" "kibana" {
   name       = "kibana"
   namespace  = "kube-system"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "https://helm.elastic.co"
   chart      = "kibana"
   wait       = false
   values     = ["${file("./values/kibana.yml")}"]

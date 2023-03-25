@@ -6,4 +6,4 @@ persistence:
   enabled: false
 service:
   type: LoadBalancer
-#protocol: http
+protocol: http
