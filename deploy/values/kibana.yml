@@ -1,3 +1,2 @@
 service:
   type: LoadBalancer
-imageTag: "7.17.3"
