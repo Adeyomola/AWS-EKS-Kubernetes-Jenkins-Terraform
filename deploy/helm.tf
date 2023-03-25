@@ -39,7 +39,7 @@ resource "helm_release" "kibana" {
   name       = "kibana"
   cleanup_on_fail = true
   namespace  = "kube-system"
-  repository = "https://helm.elastic.co"
+  repository = "https://charts.bitnami.com/bitnami"
   chart      = "kibana"
   wait       = false
   values     = ["${file("./values/kibana.yml")}"]
