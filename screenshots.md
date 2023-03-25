@@ -29,3 +29,5 @@ EKS Provisioning Output: ![Alt](/screenshots/EKS%20Provision%20Output.png)
 EKS Overview: ![Alt](/screenshots/EKS%20overview.png)
 
 EKS Cluster Nodes and Node Groups: ![Alt](/screenshots/EKS%20Cluster%20Nodes.png)
+
+EKS VPC: ![Alt](/screenshots/eks%20vpc.png)
