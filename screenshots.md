@@ -1,10 +1,10 @@
 AlertManager: ![Alt](/screenshots/alertmanager.png)
 
-Loki Simple-App Log: [Alt](/screenshots/Loki%20App%20log.png)
+Loki Simple-App Log: ![Alt](/screenshots/Loki%20App%20log.png)
 
-Loki Sock-Shop Front-End Log: [Alt](/screenshots/Loki%20Sock-Shop.png)
+Loki Sock-Shop Front-End Log: ![Alt](/screenshots/Loki%20Sock-Shop.png)
 
-Loki Work Node Log: [Alt](/screenshots/Loki%20Worker%20Node.png)
+Loki Work Node Log: ![Alt](/screenshots/Loki%20Worker%20Node.png)
 
 Grafana: ![Alt](/screenshots/Grafana.png)
 
