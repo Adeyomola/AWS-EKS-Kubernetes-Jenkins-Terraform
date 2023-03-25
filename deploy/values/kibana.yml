@@ -1,2 +1,2 @@
-service:
-  type: LoadBalancer
+#service:
+#  type: LoadBalancer
