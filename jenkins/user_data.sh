@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install openjdk-11-jdk -y
 
 #install Jenkins
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/" > /etc/apt/sources.list.d/jenkins.list
 sudo apt update
 sudo apt install jenkins -y
